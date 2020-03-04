@@ -1,0 +1,145 @@
+<button mat-button (click)="isLinear = !isLinear">Switch Linear</button>
+<form [formGroup]="surveyForm">
+    <mat-vertical-stepper [linear]="isLinear">
+        <mat-step formGroupName="basicQuestions" [stepControl]="surveyForm.get('basicQuestions')" optional>
+            <ng-template matStepLabel>
+                <u>Personal Information</u>
+            </ng-template>
+            <h4>Fill In Personal Information</h4>
+            <div>
+                <mat-form-field>
+                    <input name="name" matInput formControlName="name" required />
+                    <mat-placeholder>
+                      <mat-icon>person</mat-icon>Name
+                    </mat-placeholder>
+                </mat-form-field>    
+            </div>
+            <div>
+                <mat-form-field>
+                  <input type="text" name="nickname" matInput placeholder="Nickname" />
+                </mat-form-field>
+            </div> 
+            <div>
+                <mat-form-field>
+                  <input type="text" name="country" matInput placeholder="Country" formControlName="country" [matAutocomplete]="countries" />
+                </mat-form-field>
+                <mat-autocomplete #countries="matAutocomplete">
+                  <mat-option *ngFor="let country of countries$ | async" [value]="country.name">
+                    {{ country.name }}
+                  </mat-option>
+                </mat-autocomplete>
+            </div>
+            <div>
+                <mat-form-field>
+                  <input type="text" name="majorTech" matInput placeholder="Major Technology" formControlName="majorTech" [matAutocomplete]="majorTechs"
+                  />
+                </mat-form-field>
+                <mat-autocomplete #majorTechs="matAutocomplete">
+                  <mat-optgroup *ngFor="let techList of majorTechList" [label]="techList.name">
+                    <mat-option *ngFor="let tech of techList.items" [value]="tech">
+                      {{ tech }}
+                    </mat-option>
+                  </mat-optgroup>
+                </mat-autocomplete>
+              </div>
+              <div>
+                <mat-form-field>
+                  <textarea name="intro_self" matInput placeholder="Self Introduction" formControlName="intro" required matTextareaAutosize></textarea>
+                  <mat-hint>Brief introduction！</mat-hint>
+                  <mat-error *ngIf="surveyForm.get('basicQuestions').get('intro').hasError('required')">Please remember input self introduction！</mat-error>
+                  <mat-error *ngIf="surveyForm.get('basicQuestions').get('intro').hasError('minlength')">Please input at least 10 words！</mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field>
+                  <input type="text" name="birthday" matInput placeholder="Birthday" [matDatepicker]="birthdayPicker" />
+                  <mat-datepicker-toggle [for]="birthdayPicker" matSuffix></mat-datepicker-toggle>
+                  <mat-datepicker #birthdayPicker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field>
+                  <mat-select formControlName="interest" #selectInterest placeholder="Your interests?" multiple>
+                    <mat-optgroup *ngFor="let parent of interestList" [label]="parent.name">
+                      <mat-option *ngFor="let child of parent.subItems" [value]="child.id">{{ child.name }}</mat-option>
+                    </mat-optgroup>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div>
+                <button mat-button matStepperNext>Processed to 「Detailed Question」</button>
+              </div>                      
+        </mat-step> 
+        <mat-step editable="false" formGroupName="mainQuestions" [stepControl]="surveyForm.get('mainQuestions')">
+          <ng-template matStepLabel>
+              <em>Detailed Question</em>
+            </ng-template>
+            <h4>Main Questions</h4>
+            <div>
+              <mat-form-field>
+                <input type="number" matInput placeholder="What is your average daily consumption？">
+                <mat-icon matPrefix>attach_money</mat-icon>
+                <span matSuffix>CNY</span>
+              </mat-form-field>
+            </div>
+            <div>
+              <div>In addition to living expenses, what do you spend the most？</div>
+              <mat-checkbox formControlName="payForAll" [indeterminate]="indeterminateSelectedPayFor" (change)="checkAllChange($event)">All</mat-checkbox>
+              <mat-checkbox formControlName="payForBook" (change)="payForChange()" color="primary">Book</mat-checkbox>
+              <mat-checkbox formControlName="payForMusic" (change)="payForChange()" color="primary">Music</mat-checkbox>
+              <mat-checkbox formControlName="payForMovie" (change)="payForChange()" color="primary">Movie</mat-checkbox>
+            </div>
+            <div>
+              <div>What is your opinion on Angular？</div>
+              <mat-radio-group formControlName="angularMaterialLikeScore" labelPosition="before">
+                <mat-radio-button [value]="1">Hate</mat-radio-button>
+                <mat-radio-button [value]="2">Dislike</mat-radio-button>
+                <mat-radio-button [value]="3">Common</mat-radio-button>
+                <mat-radio-button [value]="4">Like</mat-radio-button>
+                <mat-radio-button [value]="5">Perfect</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div>
+              <div>News Subscription</div>
+              <div>
+                <mat-slide-toggle formControlName="subscribeAngular" color="primary">Angular Skills</mat-slide-toggle>
+              </div>
+              <div>
+                <mat-slide-toggle formControlName="subscribeAngularMaterial" color="primary">Angular Material Raiders</mat-slide-toggle>
+              </div>
+              <div>
+                <mat-slide-toggle formControlName="subscribeNgRx" color="primary">NgRx Started</mat-slide-toggle>
+              </div>
+            </div>                        
+            <button mat-button matStepperPrevious>Processed to 「Personal Information」</button>
+            <button mat-button matStepperNext>Processed to 「Other」</button>
+        </mat-step>
+        <mat-step label="Other" formGroupName="otherQuestions" [stepControl]="surveyForm.get('otherQuestions')">
+            <h4>Other Question</h4>
+            <section>
+              <div>
+                Choose your favourite color?
+              </div>
+              <div>
+                <span>Red</span>
+                <mat-slider formControlName="favoriteColorRed" min="0" max="255" step="1"></mat-slider>
+              </div>
+              <div>
+                <span>Green</span>
+                <mat-slider formControlName="favoriteColorGreen" min="0" max="255" step="1"></mat-slider>
+              </div>
+              <div>
+                <span>Blue</span>
+                <mat-slider formControlName="favoriteColorBlue" min="0" max="255" step="1"></mat-slider>
+              </div>
+              <div>RGB: ({{ selectedColorRed }}, {{ selectedColorGreen }}, {{ selectedColorBlue }})</div>
+              <div style="width: 50px; height: 50px; border: 1px solid #000" [ngStyle]="{background: selectedColorStyle}"></div>
+            </section>
+            <section>
+              <div>How about the survey?</div>
+              <mat-slider formControlName="surveyScore" min="0" max="100" step="5" thumbLabel [tickInterval]="2"></mat-slider>
+            </section>          
+            <button mat-button matStepperPrevious>Processed to 「Detailed Question」</button>
+        </mat-step>
+    </mat-vertical-stepper>
+</form>
