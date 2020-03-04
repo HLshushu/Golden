@@ -1,0 +1,103 @@
+<button mat-button color="primary">Change Position</button>
+<button mat-button color="primary">Post</button>
+<div class="container">
+    <section class="aside">
+        <mat-accordion multi="false" displayMode="flat">
+            <mat-expansion-panel hideToggle="true" expanded="true">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-icon>inbox</mat-icon>
+                    Inbox
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    3 unread
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+          
+                <mat-nav-list>
+                  <mat-list-item>
+                    <mat-icon>folder</mat-icon>
+                    Angular
+                  </mat-list-item>
+                  <mat-list-item>
+                    <mat-icon>folder</mat-icon>
+                    JavaSCript
+                  </mat-list-item>
+                  <mat-list-item>
+                    <mat-icon>folder</mat-icon>
+                    HTML
+                  </mat-list-item>
+                </mat-nav-list>
+            </mat-expansion-panel>
+          
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <mat-icon>person</mat-icon>
+                    Contact List
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    2 online
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-action-row>
+                  <button mat-button color="primary">Manage Contacts</button>
+                </mat-action-row>
+                <mat-nav-list>
+                  <mat-list-item>
+                    <img matListAvatar src="https://upload.wikimedia.org/wikipedia/commons/c/c0/Lin_Chi-Ling_%28cropped%29.jpg" />
+                    <p matLine>zhilin</p>
+                    <button mat-icon-button>
+                      <mat-icon>email</mat-icon>
+                    </button>
+                  </mat-list-item>
+                  <mat-list-item>
+                    <button mat-icon-button>
+                      <mat-icon>email</mat-icon>
+                    </button>
+                    <img matListAvatar src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/2008TIBE_Day4_Hall1_Cit%C3%A9Group_TheyKissAgain_SigningEvent_Ariel_Yi-cheng_Lin.jpg/440px-2008TIBE_Day4_Hall1_Cit%C3%A9Group_TheyKissAgain_SigningEvent_Ariel_Yi-cheng_Lin.jpg"
+                    />
+                    <p matLine>yichen</p>
+                  </mat-list-item>
+                </mat-nav-list>
+            </mat-expansion-panel>
+          
+        </mat-accordion>
+    </section>
+
+    <section class="main">
+      <button mat-button (click)="tabIndex = tabIndex - 1">Previous</button>
+      <button mat-button (click)="tabIndex = tabIndex + 1">Next</button>
+      <p>SelectedIndex: {{ tabIndex }}</p>
+      <mat-tab-group mat-stretch-tabs backgroundColor="primary" color="accent" 
+        [(selectedIndex)]="tabIndex" 
+        (focusChange)="tabFocusChange($event)" 
+        (selectedIndexChange)="tabSelectedIndexChange($event)"
+        (selectedTabChange)="tabSelectedTabChange($event)">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon>inbox</mat-icon>
+            Emails
+          </ng-template>
+          Emails List
+        </mat-tab>
+        <mat-tab disabled="true">
+          <ng-template mat-tab-label>
+            <mat-icon>settings</mat-icon>
+            System Settings
+          </ng-template>
+          System Settings List
+        </mat-tab>
+        <mat-tab label="Other">
+          Other Page
+        </mat-tab>
+        <mat-tab label="Other2"></mat-tab>
+        <mat-tab label="Other3"></mat-tab>
+        <mat-tab label="Other4"></mat-tab>
+        <mat-tab label="Other5"></mat-tab>
+        <mat-tab label="Other6"></mat-tab>
+        <mat-tab label="Other7"></mat-tab>
+        <mat-tab label="Other8"></mat-tab>
+      </mat-tab-group>
+    </section>  
+</div>

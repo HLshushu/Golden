@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>
+    New Blog Posts
+</h2>
+
+<mat-dialog-content class="post-form">
+  <mat-form-field>
+    <input matInput placeholder="Title" [(ngModel)]="title" matTooltip="Give your article a nice title" matTooltipShowDelay="500" matTooltipHideDelay="500" />
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Content" rows="3"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-chip-list #chipList>
+      <mat-chip *ngFor="let tag of tags" (remove)="removeTag(tag)">
+        {{ tag }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </mat-chip-list>
+    <input placeholder="Chips" [matChipInputFor]="chipList" matChipInputAddOnBlur="true" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="addTag($event)" />
+  </mat-form-field>
+
+  <p>Rule 01</p>
+  <p>Rule 02</p>
+  <p>Rule 03</p>
+  <p>Rule 04</p>
+  <p>Rule 05</p>
+  <p>Rule 06</p>
+  <p>Rule 07</p>
+  <p>Rule 08</p>
+  <p>Rule 09</p>
+  <p>Rule 10</p>
+  <p>Rule 11</p>
+  <p>Rule 12</p>
+  <p>Rule 13</p>
+  <p>Rule 14</p>
+  <p>Rule 15</p>
+  <p>Rule 16</p>
+  <p>Rule 17</p>
+  <p>Rule 18</p>
+  <p>Rule 19</p>
+  <p>Rule 20</p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button color="primary" (click)="move()">Change Position</button>
+  <button mat-button color="primary" (click)="doPost()">Post</button>
+  <button mat-button mat-dialog-close color="warn">Cancel</button>
+</mat-dialog-actions>
+  

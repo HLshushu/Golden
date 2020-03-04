@@ -1,0 +1,22 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.post-tile {
+  align-self: flex-start;
+  width: 100%;
+  margin: 5px;
+}
+  
+.post-tile .mat-card-image {
+  max-height: 300px;
+}
+
+mat-card:focus {
+  background: lightblue;
+  width: 95%;
+}
+.blog-sidebard-content {
+  align-self: flex-start;
+  padding-top: 100px;
+  width: 95%;
+}
+  
