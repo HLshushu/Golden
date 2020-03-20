@@ -1,0 +1,50 @@
+<mat-toolbar class="demo-app-header" color="primary">
+    <button mat-icon-button (click)="sideNav.toggle()">
+        <mat-icon>{{ sideNav.opened ? 'close' : 'menu' }}</mat-icon>
+    </button>
+    <span>Stock Intelligent Analysis Assistant - Yahoo</span>
+
+    <!-- Add the seprator to push the icon to the right -->
+    <span class="toolbar-seprator"></span>
+    <mat-icon>favorite</mat-icon>
+</mat-toolbar>
+
+<mat-sidenav-container class="demo-app-container">
+    <mat-sidenav class="demo-app-sidenav" #sideNav opened="true" mode="side">
+        <mat-nav-list>
+            <mat-list-item>
+                <p matLine>Home</p>
+                <mat-icon>home</mat-icon>
+            </mat-list-item>
+            <mat-list-item>
+                <p matLine>News</p>
+                <mat-icon>notification_important</mat-icon>
+            </mat-list-item>
+            <mat-list-item>
+                <p matLine>Market data</p>
+                <mat-icon>data_usage</mat-icon>
+            </mat-list-item>
+            <mat-list-item>
+                <p matLine>Videos</p>
+                <mat-icon>video_library</mat-icon>
+            </mat-list-item>
+            <mat-list-item>
+                <p matLine>Wallet</p>
+                <mat-icon>account_balance</mat-icon>
+            </mat-list-item>
+            <mat-list-item>
+                <p matLine>More</p>
+                <mat-icon>more_horiz</mat-icon>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <button mat-button (click)="sideNav.toggle()">Switch SideNav</button>
+    </mat-sidenav-content>
+
+    <mat-sidenav class="demo-app-sidenav" opened="true" mode="side" position="end">
+        <div>Right Menu</div>
+    </mat-sidenav>
+
+</mat-sidenav-container>
