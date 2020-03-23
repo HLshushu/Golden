@@ -39,12 +39,13 @@
         </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content>
-        <button mat-button (click)="sideNav.toggle()">Switch SideNav</button>
-    </mat-sidenav-content>
-
     <mat-sidenav class="demo-app-sidenav" opened="true" mode="side" position="end">
         <div>Right Menu</div>
     </mat-sidenav>
+
+    <mat-sidenav-content class="demo-app-sidenav-content">
+        <!-- <button mat-button (click)="sideNav.toggle()">Switch SideNav</button> -->
+        <div id="lineChart" style="width:calc(100vw - 650px);height:calc(100vh - 150px)"></div>
+    </mat-sidenav-content>
 
 </mat-sidenav-container>

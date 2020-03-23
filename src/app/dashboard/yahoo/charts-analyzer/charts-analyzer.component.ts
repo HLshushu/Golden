@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import * as echarts from 'echarts';
 
 @Component({
-  selector: 'app-yahoo',
-  templateUrl: './yahoo.component.html',
-  styleUrls: ['./yahoo.component.css']
+  selector: 'app-charts-analyzer',
+  templateUrl: './charts-analyzer.component.html',
+  styleUrls: ['./charts-analyzer.component.css']
 })
-export class YahooComponent implements OnInit {
+export class ChartsAnalyzerComponent implements OnInit {
 
   constructor() {
     console.log(echarts)
@@ -43,7 +43,7 @@ export class YahooComponent implements OnInit {
             ],
             series : [
                 {
-                    name:'New Contact',
+                    name:'新签合同额',
                     type:'line',
                     smooth:true,
                     itemStyle : {
@@ -57,7 +57,7 @@ export class YahooComponent implements OnInit {
  
                 },
                 {
-                    name:'Sales',
+                    name:'营业收入',
                     type:'line',
                     smooth:true,
                     itemStyle: {
@@ -70,7 +70,7 @@ export class YahooComponent implements OnInit {
                     data:[3, 2, 4, 7, 0, 3, 1,3,4,1,2,3]
                 },
                 {
-                    name:'Retained Profits',
+                    name:'归属母公司净利润',
                     type:'line',
                     smooth:true,
                     itemStyle: {
@@ -86,5 +86,4 @@ export class YahooComponent implements OnInit {
         };
         lineChart.setOption(lineChartOption);
     }
-
 }

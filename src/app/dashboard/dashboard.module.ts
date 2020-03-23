@@ -11,6 +11,7 @@ import { AfterPostNotifyComponent } from './blog/after-post-notify/after-post-no
 import { InboxComponent } from './inbox/inbox.component';
 import { EmailListComponent } from './inbox/email-list/email-list.component';
 import { YahooComponent } from './yahoo/yahoo.component';
+import { ChartsAnalyzerComponent } from './yahoo/charts-analyzer/charts-analyzer.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, DashboardRoutingModule, SharedMaterialModule],
@@ -21,7 +22,10 @@ import { YahooComponent } from './yahoo/yahoo.component';
     AddPostConfirmDialogComponent, 
     AfterPostNotifyComponent, 
     InboxComponent, 
-    EmailListComponent, YahooComponent],
+    EmailListComponent, 
+    YahooComponent, 
+    ChartsAnalyzerComponent
+  ],
   exports: [],
   entryComponents: [AddPostDialogComponent, AddPostConfirmDialogComponent, AfterPostNotifyComponent]
 })
