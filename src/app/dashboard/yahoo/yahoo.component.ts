@@ -14,6 +14,7 @@ export class YahooComponent implements OnInit {
  
   ngOnInit() {
     this.initCharts();
+    this.initBarCharts();
   }
  
   initCharts() {
@@ -33,7 +34,7 @@ export class YahooComponent implements OnInit {
                 {
                     type : 'category',
                     boundaryGap : false,
-                    data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+                    data : ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
                 }
             ],
             yAxis : [
@@ -85,6 +86,50 @@ export class YahooComponent implements OnInit {
             ]
         };
         lineChart.setOption(lineChartOption);
+    }
+
+    initBarCharts() {
+        const ec = echarts as any;
+        let barChart = ec.init(document.getElementById('barChart'));
+        let barChartOption ={
+                tooltip : {
+                    trigger: 'axis'
+                },
+                toolbox: {
+                    show : false,
+                },
+                legend:{
+                    padding:0
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : false,
+                        data : ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                    {
+                        name:'Volume',
+                        type:'bar',
+                        smooth:true,
+                        itemStyle: {
+                            normal : {
+                                lineStyle:{
+                                    color:'#ff713a'
+                                }
+                            }
+                        },
+                        data:[10, 2, 6, 3, 2, 9, 10,3,4,8,4,3]
+                    }
+                ]
+            };
+            barChart.setOption(barChartOption);    
     }
 
 }

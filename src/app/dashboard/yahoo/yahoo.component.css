@@ -1,4 +1,4 @@
-.demo-app-header {
+.app-header {
     position: fixed;
     top: 0;
     z-index: 2;
@@ -8,18 +8,27 @@
     flex: 1 1 auto;
 }
 
-.demo-app-container,
-.demo-app-sidenav {
+.app-container,
+.app-left-sidenav,
+.app-right-sidenav {
   position: absolute;
   padding-top: 64px;
   height: calc(100vh - 64px);
 }
 
-.demo-app-sidenav {
-    width: 300px;
+.app-left-sidenav {
+    width: 200px;
 }
 
-.demo-app-sidenav-content {
+.app-right-sidenav {
+    width: 400px;
+}
+
+.app-tab {
+    width: auto;
+}
+
+.app-sidenav-content {
     width: calc(100vw - 600px);
 }
 
