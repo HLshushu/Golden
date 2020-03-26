@@ -12,7 +12,7 @@
 <mat-sidenav-container class="app-container">
     <mat-sidenav class="app-left-sidenav" #sideNav opened="true" mode="side">
         <mat-nav-list>
-            <mat-list-item>
+            <mat-list-item (click)="getInbox()">
                 <!-- Add mat-list-icon to put the icon to the left/ -->
                 <mat-icon mat-list-icon>home</mat-icon>
                 <p matLine style="text-align:left">Home</p>

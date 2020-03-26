@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as echarts from 'echarts';
 
 @Component({
@@ -8,13 +9,17 @@ import * as echarts from 'echarts';
 })
 export class YahooComponent implements OnInit {
 
-  constructor() {
+  constructor(private router : Router) {
     console.log(echarts)
   }
  
   ngOnInit() {
     this.initCharts();
     this.initBarCharts();
+  }
+
+  getInbox() {
+    this.router.navigate(['/dashboard/inbox']);
   }
  
   initCharts() {

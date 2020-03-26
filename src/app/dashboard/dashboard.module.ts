@@ -12,9 +12,16 @@ import { InboxComponent } from './inbox/inbox.component';
 import { EmailListComponent } from './inbox/email-list/email-list.component';
 import { YahooComponent } from './yahoo/yahoo.component';
 import { ChartsAnalyzerComponent } from './yahoo/charts-analyzer/charts-analyzer.component';
+import { DashboardComponent } from './dashboard.component';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, DashboardRoutingModule, SharedMaterialModule],
+  imports: [
+    CommonModule, 
+    FormsModule, 
+    ReactiveFormsModule, 
+    DashboardRoutingModule, 
+    SharedMaterialModule
+  ],
   declarations: [
     SurveyComponent, 
     BlogComponent, 
@@ -24,9 +31,15 @@ import { ChartsAnalyzerComponent } from './yahoo/charts-analyzer/charts-analyzer
     InboxComponent, 
     EmailListComponent, 
     YahooComponent, 
-    ChartsAnalyzerComponent
+    ChartsAnalyzerComponent, 
+    DashboardComponent 
   ],
   exports: [],
-  entryComponents: [AddPostDialogComponent, AddPostConfirmDialogComponent, AfterPostNotifyComponent]
+  entryComponents: [
+    AddPostDialogComponent, 
+    AddPostConfirmDialogComponent, 
+    AfterPostNotifyComponent
+  ]
 })
+
 export class DashboardModule {}

@@ -1,0 +1,9 @@
+<h1>Angular Router</h1>
+<button mat-button (click)="getYahoo()" color="primary">Yahoo</button>
+<nav>
+  <a routerLink="/dashboard/yahoo" routerLinkActive="active">Yahoo</a>
+  <a routerLink="/dashboard/survey" routerLinkActive="active">Survey</a>
+  <a routerLink="/dashboard/blog" routerLinkActive="active">Blog</a>
+  <a routerLink="/dashboard/inbox" routerLinkActive="active">Inbox</a>
+</nav>
+<router-outlet></router-outlet>
